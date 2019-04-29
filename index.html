@@ -23,6 +23,9 @@
         minute : 'numeric',  // 分
         second : 'numeric'   // 秒
       });
+      if (bug_now.substring(0, 2) != "平成") {
+        bug_now = "平成" + bug_now;
+      }
       document.getElementById("bug_time").innerHTML = bug_now;
       var unix_time = now.getTime();
       var year = now.getFullYear();
