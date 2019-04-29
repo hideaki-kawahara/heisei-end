@@ -25,14 +25,21 @@
       });
       document.getElementById("bug_time").innerHTML = bug_now;
       var unix_time = now.getTime();
+      var year = now.getFullYear();
       var gengo = "平成";
       if (unix_time >= 1556636400000) {
         gengo = "令和";
+        year -= 2018;
+        if (year == 1) {
+          year = "元";
+        }
+      } else {
+        year -= 1988;
       }
-      var get_now = bug_now.substring(2);
-      document.getElementById("time").innerHTML = gengo + get_now;
+      var get_now = bug_now.substring(4);
+      document.getElementById("time").innerHTML = gengo + year + get_now;
     }
-    setInterval('time()',1000);
+    setInterval('time()',100);
     </script>
 </body>
 </html>
