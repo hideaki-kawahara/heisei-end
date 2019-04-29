@@ -9,8 +9,8 @@
     <script>
     time();
     function time(){
-        var now = new Date().toLocaleDateString('ja-JP-u-ca-japanese', {
-  era    : 'long'   ,  // 時代 : 'narrow' にすると '平成' は 'H' になる
+        var now = new Date(2019, 4, 1).toLocaleDateString('ja-JP-u-ca-japanese', {
+  era    : 'long'   ,  // 元号 : 'narrow' にするとHになる
   year   : 'numeric',  // 年 : 'ja-JP-u-ca-japanese' の場合は和暦
   month  : 'long'   ,  // 月
   day    : 'numeric',  // 日
