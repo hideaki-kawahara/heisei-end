@@ -11,7 +11,7 @@
       body {
           font-size: 1.4em;
       }
-      h1#bug_time, h1#time {
+      h1#bug_time, h1#time, h1#count {
           font-size: 6vw;
       }
   </style>
@@ -21,6 +21,7 @@
 <body>
   <h1 id="bug_time"></h1>
   <h1 id="time"></h1>
+  <h1 id="count"></h1>
     <script>
     time();
     function time(){
@@ -54,6 +55,29 @@
       }
       var get_now = bug_now.substring(4);
       document.getElementById("time").innerHTML = gengo + year + get_now;
+
+      var endDate = new Date('2019/05/01 00:00:00');
+      var period = endDate - now;
+      var addZero = function(n){return('0'+n).slice(-2);}
+      var addZeroDay = function(n){return('0'+n).slice(-3);}
+      if(period >= 0) {
+       var day = Math.floor(period / (1000 * 60 * 60 * 24));
+       period -=  (day　*(1000 * 60 * 60 * 24));
+       var hour = Math.floor(period / (1000 * 60 * 60));
+       period -= (hour *(1000 * 60 * 60));
+       var minutes =  Math.floor(period / (1000 * 60));
+       period -= (minutes * (1000 * 60));
+       var second = Math.floor(period / 1000);
+       var insert = "令和まで" ;
+       insert += addZeroDay(day) +'日';
+       insert += addZero(hour) + '時';
+       insert += addZero(minutes) +'分';
+       insert += addZero(second)+ '秒';
+       document.getElementById("count").innerHTML = insert;
+      } else {
+       document.getElementById("count").innerHTML = "あけまして令和おめでとう！";
+      }
+
     }
     setInterval('time()',100);
     </script>
